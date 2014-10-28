@@ -3,13 +3,24 @@
  */
 var dashboard = new Dashboard();
 
-dashboard.addWidget('sensordash', 'Number', {
+dashboard.addWidget('lightdash', 'Number', {
    getData: function () {
        var self = this;
-       $.get('/sensordash/', function(data) {
+       $.get('/lightdash/', function(data) {
            self.data = data;
-           dashboard.publish('sensordash/render');
+           dashboard.publish('lightdash/render');
        });
-       dashboard.publish('sensordash/render');
+       dashboard.publish('lightdash/render');
+   }
+});
+
+dashboard.addWidget('tempdash', 'Number', {
+   getData: function () {
+       var self = this;
+       $.get('/tempdash/', function(data) {
+           self.data = data;
+           dashboard.publish('tempdash/render');
+       });
+       dashboard.publish('tempdash/render');
    }
 });
